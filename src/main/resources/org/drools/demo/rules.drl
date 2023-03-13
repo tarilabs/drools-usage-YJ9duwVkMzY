@@ -1,0 +1,16 @@
+package org.drools.demo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+rule R1
+agenda-group "endPoint1"
+when
+  f : Fact ( map.get("fileName") == "abc.11032023.xml", map.get("documentType") == "Invoice" )
+then
+  Action action1 = new Action();
+  action1.setValue("WorkflowId1");
+  List actions = new ArrayList();
+  actions.add(action1);
+  f.setActions(actions);
+end
